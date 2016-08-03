@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do
-  Player.create(name: Faker::Name.name, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, coach: false, password_digest: "123")
+  Player.create(name: Faker::Name.name, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, coach: false, password: '123')
 end
 
 3.times do
-  League.create(sport: ["football", "basketball", "soccer", "hockey"].sample)
+  League.create(sport: %w(football basketball soccer hockey).sample)
 end
 
 10.times do
