@@ -1,5 +1,5 @@
 <div class="register">
-   <%= form_for(@player) do |f| %>
+  <%= form_for :player, url: '/players' do |f| %>
      <%= f.label :name %>
      <%= f.text_field :name %>
 
