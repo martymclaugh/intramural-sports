@@ -1,0 +1,12 @@
+<h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
+<% @team.players.each do |player| %>
+<li><%= player.name %> <br>
+<i>Phone Number: <%= player.phone %></i></li>
+<% end %>
+
+
+<% @team.games.each do |game| %>
+<p>Game: <%= game.id %><br>
+Location: <%= game.location %><br>
+Date: <%= game.date %><br></p>
+<% end %>

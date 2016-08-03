@@ -1,0 +1,8 @@
+<h1><%= @league.sport %></h1>
+<ul>
+<% @teams.each do |team| %>
+<li><%= team.name %>
+<p><i>Players: <%= team.players.count %></i></p></li>
+<% p team %>
+<p><%= link_to 'Team details', league_team_path(@league, team) %></p>
+<% end %>
