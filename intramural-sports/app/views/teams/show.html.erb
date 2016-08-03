@@ -9,4 +9,5 @@
 <p>Game: <%= game.id %><br>
 Location: <%= game.location %><br>
 Date: <%= game.date %><br></p>
+<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
 <% end %>
