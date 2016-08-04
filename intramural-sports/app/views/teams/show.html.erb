@@ -14,7 +14,7 @@
 
 
 
-		<% if current_user.coach == true %>
+	<% if current_user.coach == true %>
 			<h2>Add Player to Team: </h2>
 			<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
 				<%= f.label :name %>
@@ -30,13 +30,12 @@
 
 				<%= f.submit "Register" %>
 			<% end %>
-		<% end %>
 
 		
 
 
 		<% if @league.sport == "basketball" && @team.players.length > 6 %>
-			<h2>Add Player to Team: </h2>
+			<h2>Create Game: </h2>
 			<%= form_for :player, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
 			<%= f.text_field :home_team %>
@@ -53,7 +52,7 @@
 			<%= f.submit "Register" %>
 			<% end %>
 		<% elsif @league.sport == "football" && @team.players.length > 21 %>
-			<h2>Add Player to Team: </h2>
+			<h2>Create Game: </h2>
 			<%= form_for :player, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
 			<%= f.text_field :home_team %>
@@ -70,7 +69,7 @@
 			<%= f.submit "Register" %>
 			<% end %>
 		<% elsif @league.sport == "hockey" && @team.players.length > 10 %>
-			<h2>Add Player to Team: </h2>
+			<h2>Create Game: </h2>
 			<%= form_for :player, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
 			<%= f.text_field :home_team %>
@@ -87,6 +86,7 @@
 			<%= f.submit "Register" %>
 			<% end %>
 		<% end %>
+	<% end %>
 			
 			
 
