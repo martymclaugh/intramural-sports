@@ -1,19 +1,33 @@
 class GamesController < ApplicationController
 
-def index
+	def index
 
-	@games = Game.all
+		@games = Game.all
 
-end
+	end
 
 
-def show
-	@game = Game.find(params[:id])
-	@home_team = Team.find(@game.home_id)
-	@away_team = Team.find(@game.away_id)
-	@league = League.find(Team.find(@game.away_id).league_id)
-end
+	def show
+		@game = Game.find(params[:id])
+		@home_team = Team.find(@game.home_id)
+		@away_team = Team.find(@game.away_id)
+		@league = League.find(Team.find(@game.away_id).league_id)
+	end
 
+
+	def edit
+
+
+	end
+
+
+	def new
+
+	end
+
+	def create
+
+	end
 
 def update
 	@game = Game.find(params[:id])
@@ -22,4 +36,8 @@ def update
 		redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
 	end
 end
+
+
+def game_params
+	params.require(:team).permit(:home_team, :away_team, :address, :date)
 end

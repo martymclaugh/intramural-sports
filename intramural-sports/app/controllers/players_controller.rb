@@ -3,17 +3,23 @@ class PlayersController < ApplicationController
   end
 
   def create
-    if params[:player][:password] == params[:player][:password_confirmation]
-      player = Player.new(player_params)
-      player.coach = true
-    end
-    if player.save
-      team = Team.create(name: params[:player][:team], league_id: League.find_by(sport: params[:player][:sport]).id)
-      teamplayer = PlayerTeam.create(player_id: player.id, team_id: team.id)
-      session[:player_id] = player.id
-      redirect_to "/leagues/#{team.league_id}/teams/#{team.id}"
+    if params[:player][:coach] == "true"
+      if params[:player][:password] == params[:player][:password_confirmation]
+        player = Player.new(player_params)
+      end
+      if player.save
+        team = Team.create(name: params[:player][:team], league_id: League.find_by(sport: params[:player][:sport]).id)
+        teamplayer = PlayerTeam.create(player_id: player.id, team_id: team.id)
+        session[:player_id] = player.id
+        redirect_to "/leagues/#{team.league_id}/teams/#{team.id}"
+      else
+        redirect_to '/signup'
+      end
     else
-      redirect_to '/signup'
+      player = Player.create(name: params[:player][:name], email: params[:player][:email], phone: params[:player][:phone], password: "123", coach: false)
+      p player
+      PlayerTeam.create(player_id: player.id, team_id: params[:player][:team])
+      redirect_to "/leagues/#{Team.find(params[:player][:team]).league_id}/teams/#{params[:player][:team]}"
     end
   end
 
