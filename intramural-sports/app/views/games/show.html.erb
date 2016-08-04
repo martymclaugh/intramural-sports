@@ -1,6 +1,47 @@
+<h3><%=@league.sport%> League</h3>
 <h1>Game <%=@game.id%></h1>
-<h3><%=Team.find(@game.home_id).name%> vs <%=Team.find(@game.away_id).name%></h3>
+<h3><%=@home_team.name%> vs <%=@away_team.name%></h3>
 <h4>Location:<%=@game.location%></h4>
 <h4>Date:<%=@game.date%></h4>
 <a href="http://maps.google.com/?q=<%=@game.location%>">Map </a>
 <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+   <title>Google Maps Geocoding Demo 1</title>
+   <script src="http://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>"
+           type="text/javascript"></script>
+   <div id="map" style="width: 400px; height: 300px;"></div>
+
+   <script type="text/javascript">
+
+   var address = "<% @game.location %>";
+
+   var map = new google.maps.Map(document.getElementById('map'), {
+       mapTypeId: google.maps.MapTypeId.TERRAIN,
+       zoom: 16
+   });
+
+   var geocoder = new google.maps.Geocoder();
+
+   geocoder.geocode({
+      'address': address
+   },
+   function(results, status) {
+      if(status == google.maps.GeocoderStatus.OK) {
+         new google.maps.Marker({
+            position: results[0].geometry.location,
+            map: map
+         });
+         map.setCenter(results[0].geometry.location);
+      }
+   });
+
+</script>
+
+<% if logged_in? %>
+<p>GAME FINISHED! Submit score below!</p>
+<%= form_for league_game_path do |f| %>
+  <%= @home_team.name %> Score: <%= text_field_tag :email %>
+  <%= @away_team.name %> Score: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" %>
+<% end %>
+<% end %>
