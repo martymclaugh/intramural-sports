@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20160803190902) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name",            null: false
-    t.integer  "phone"
+    t.string   "phone"
     t.string   "email",           null: false
     t.boolean  "coach"
     t.string   "password_digest", null: false
