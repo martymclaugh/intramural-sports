@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/signup' => 'players#new'
-  post '/users' => 'players#create'
+  post '/players' => 'players#create'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

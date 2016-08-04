@@ -3,18 +3,24 @@ class PlayersController < ApplicationController
   end
 
   def create
-    player = Player.new(player_params)
+    p player_params
+    p "*" * 100
+    if params[:player][:password] == params[:player][:password_confirmation]
+      player = Player.new(player_params)
+    end
     if player.save
+      team = Team.find_by(name: params[:player][:team])
+      teamplayer = PlayerTeam.create(player_id: player.id, team_id: team.id)
       session[:player_id] = player.id
-      redirect_to '/'
+      redirect_to "/leagues/#{team.league_id}"
     else
       redirect_to '/signup'
     end
   end
 
-  private
+  protected
 
   def player_params
-    params.require(:player).permit(:name, :email, :team, :password_confirmation, :phone, :coach)
+    params.require(:player).permit(:name, :email, :password, :phone, :coach)
   end
 end
