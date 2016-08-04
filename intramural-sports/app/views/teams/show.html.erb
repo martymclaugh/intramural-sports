@@ -1,31 +1,93 @@
 <h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
 <% @team.players.each do |player| %>
 <li><%= player.name %> <br>
-<i>Phone Number: <%= player.phone %></i></li>
-<% end %>
+	<i>Phone Number: <%= player.phone %></i></li>
+	<% end %>
 
 
-<% @team.games.each do |game| %>
-<p>Game: <%= game.id %><br>
-Location: <%= game.location %><br>
-Date: <%= game.date %><br></p>
-<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
-<% end %>
+	<% @team.games.each do |game| %>
+	<p>Game: <%= game.id %><br>
+		Location: <%= game.location %><br>
+		Date: <%= game.date %><br></p>
+		<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
+		<% end %>
 
 
 
-<% if current_user.coach == true %>
-<h2>Sign up a new team: </h2>
-<%= form_for :player, url: league_team_path(@league, @team) do |f| %>
-     <%= f.label :name %>
-     <%= f.text_field :name %>
+		<% if current_user.coach == true %>
+			<h2>Add Player to Team: </h2>
+			<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
 
-     <%= f.label :email %>
-     <%= f.email_field :email %>
+				<%= f.label :email %>
+				<%= f.email_field :email %>
 
-     <%= f.label :phone %>
-     <%= f.telephone_field :phone %>
+				<%= f.label :phone %>
+				<%= f.telephone_field :phone %>
 
-     <%= f.submit "Register" %>
-<% end %>
-<% end %>
+				<%= f.hidden_field :team, :value => @team.id %>
+
+				<%= f.submit "Register" %>
+			<% end %>
+		<% end %>
+
+		
+
+
+		<% if @league.sport == "basketball" && @team.players.length > 6 %>
+			<h2>Add Player to Team: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% elsif @league.sport == "football" && @team.players.length > 21 %>
+			<h2>Add Player to Team: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% elsif @league.sport == "hockey" && @team.players.length > 10 %>
+			<h2>Add Player to Team: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% end %>
+			
+			
+
+
