@@ -3,6 +3,21 @@
 <% @teams.each do |team| %>
 <li><%= team.name %>
 <p><i>Players: <%= team.players.count %></i></p></li>
+<p><i>Last 5 games:  <% @games = Game.where("home_id=#{team.id}").or(Game.where("away_id=#{team.id}")).limit(5) %>
+  <% @games.each do |game| %>
+    <%if game.home_id == team.id && game.home_score > game.away_score %>
+    <%= p "W" %>
+    <% elsif game.home_id == team.id && game.home_score < game.away_score %>
+    <%= p "L" %>
+    <% elsif game.away_id == team.id && game.away_score > game.home_score %>
+    <%= p "W" %>
+    <% else %>
+    <%= p "L" %>
+    <% end %>
+    <% end %>
+
+
+</i></p></li>
 <% p team %>
 <p><%= link_to 'Team details', league_team_path(@league, team) %></p>
 <% end %>

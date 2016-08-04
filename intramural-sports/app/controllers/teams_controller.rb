@@ -8,6 +8,4 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     @league = League.find(params[:league_id])
   end
-
-  
 end
