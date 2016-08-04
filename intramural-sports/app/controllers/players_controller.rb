@@ -3,15 +3,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    p params
-    p "*" * 200
-    p params[:player][:coach]
-    p "*" * 200
-
     if params[:player][:coach] == "true"
-      p "made it!!!!"
-          p "*" * 200
-
       if params[:player][:password] == params[:player][:password_confirmation]
         player = Player.new(player_params)
       end
