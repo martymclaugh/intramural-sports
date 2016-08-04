@@ -22,6 +22,8 @@
      <%= f.label :password_confirmation, "Confirmation" %>
      <%= f.password_field :password_confirmation %>
 
+     <%= f.hidden_field :coach, :value => true %>
+
      <%= f.submit "Register" %>
    <% end %>
  </div>
