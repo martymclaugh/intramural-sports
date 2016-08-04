@@ -39,9 +39,9 @@
 
 <% if logged_in? %>
 <p>GAME FINISHED! Submit score below!</p>
-<%= form_for league_game_path do |f| %>
-  <%= @home_team.name %> Score: <%= text_field_tag :email %>
-  <%= @away_team.name %> Score: <%= password_field_tag :password %>
+<%= form_for :game, :method => :PUT do |f| %>
+  <%= @home_team.name %> Score: <%= text_field_tag :home_score %>
+  <%= @away_team.name %> Score: <%= text_field_tag :away_score %>
   <%= submit_tag "Submit" %>
 <% end %>
 <% end %>
