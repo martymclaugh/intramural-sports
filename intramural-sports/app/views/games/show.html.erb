@@ -1,0 +1,6 @@
+<h1>Game <%=@game.id%></h1>
+<h3><%=Team.find(@game.home_id).name%> vs <%=Team.find(@game.away_id).name%></h3>
+<h4>Location:<%=@game.location%></h4>
+<h4>Date:<%=@game.date%></h4>
+<a href="http://maps.google.com/?q=<%=@game.location%>">Map </a>
+<!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->

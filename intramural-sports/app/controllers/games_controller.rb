@@ -2,20 +2,20 @@ class GamesController < ApplicationController
 
 def index
 
-	@games = Game.find_by(:id)
+	@games = Game.all
 
 end
 
 
 def show
 
+	@game = Game.find(params[:id])
 
 end
 
 
 def edit
 
-	@game = Game.find_by(:id)
 
 end
 
