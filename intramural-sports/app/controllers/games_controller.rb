@@ -3,6 +3,9 @@ class GamesController < ApplicationController
 	def index
 
 		@games = Game.all
+	p "=" * 100
+    p params
+    p "=" * 100
 
 	end
 
@@ -12,6 +15,9 @@ class GamesController < ApplicationController
 		@home_team = Team.find(@game.home_id)
 		@away_team = Team.find(@game.away_id)
 		@league = League.find(Team.find(@game.away_id).league_id)
+	p "=" * 100
+    p params
+    p "=" * 100
 	end
 
 
@@ -40,4 +46,5 @@ end
 
 def game_params
 	params.require(:team).permit(:home_team, :away_team, :address, :date)
+end
 end
