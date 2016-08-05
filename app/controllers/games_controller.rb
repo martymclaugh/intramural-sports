@@ -57,4 +57,3 @@ def game_params
 end
 end
 
-end
