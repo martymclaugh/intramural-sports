@@ -20,7 +20,7 @@ League.create(sport: "Hockey")
 end
 
 60.times do
-  Game.create(location: Faker::Address.street_address, date: DateTime.now, home_score:0, away_score:0)
+  Game.create(location: Faker::Address.street_address, date: DateTime.now, home_score: rand(1..50), rand(1..50))
 end
 
 60.times do
