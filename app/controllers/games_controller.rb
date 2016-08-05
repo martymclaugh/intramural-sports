@@ -26,7 +26,15 @@ class GamesController < ApplicationController
 	end
 
 	def create
-
+		p "$" * 150
+		p params
+		home_team = Team.find_by(name: params[:game][:home_team])
+		away_team = Team.find_by(name: params[:game][:away_team])
+		# @game = Game.create(game_params)
+		@game = Game.create(home_id: home_team.id, away_id: away_team.id, location: params[:game][:address], date: params[:game][:date], home_score: 0, away_score: 0)
+		p @game
+		@league = League.find(Team.find(@game.away_id).league_id)
+		redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
 	end
 
 def update
@@ -38,6 +46,5 @@ def update
 end
 
 
-def game_params
-	params.require(:team).permit(:home_team, :away_team, :address, :date)
+
 end
