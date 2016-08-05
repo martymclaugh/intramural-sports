@@ -1,0 +1,119 @@
+<div class="row">
+<h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+<% @team.players.each do |player| %>
+<tr>
+<td><%= player.name %> </td>
+	<td> <%= player.phone %></td>
+</tr>
+	<% end %>
+</table>
+
+<h1> Games </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Teams </th>
+            <th>Location</th>
+						<th>Date</th>
+						<th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+
+	<% @team.games.each do |game| %>
+	<tr>
+	<td> <%= link_to league_game_path(@league, game) do  %><%= Team.find(game.home_id).name %> vs <%= Team.find(game.away_id).name%> <%end%> </td>
+ <td><%= game.location %></td>
+		<td> <%= game.date.strftime('%v') %></td>
+	<td> <%= game.date.strftime('%r') %></td>
+</tr>
+		<% end %>
+	</table>
+
+
+
+
+	<% if current_user.coach == true %>
+			<h2>Add Player to Team: </h2>
+			<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
+				<%= f.label :name %>
+				<%= f.text_field :name %>
+
+				<%= f.label :email %>
+				<%= f.email_field :email %>
+
+				<%= f.label :phone %>
+				<%= f.telephone_field :phone %>
+
+				<%= f.hidden_field :team, :value => @team.id %>
+
+				<%= f.submit "Register" %>
+			<% end %>
+
+
+
+
+		<% if @league.sport == "basketball" && @team.players.length > 6 %>
+			<h2>Create Game: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% elsif @league.sport == "football" && @team.players.length > 21 %>
+			<h2>Create Game: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% elsif @league.sport == "hockey" && @team.players.length > 10 %>
+			<h2>Create Game: </h2>
+			<%= form_for :player, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
+
+			<%= f.label :away_team %>
+			<%= f.text_field :away_team %>
+
+			<%= f.label :address %>
+			<%= f.text_field :address %>
+
+			<%= f.label :date %>
+			<%= f.date_select :date %>
+
+			<%= f.submit "Register" %>
+			<% end %>
+		<% end %>
+
+	<% end %>
+
+</div>
