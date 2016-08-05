@@ -14,13 +14,16 @@
   <tr>
     <td><%= link_to league_team_path(@league, team) do %><%= team.name %><% end %></td>
     <td><%= team.players.count %></td>
-    <td><% @games = Game.where("home_id=#{team.id}").or(Game.where("away_id=#{team.id}")).limit(5) %>
+    <td><% @games = team.games.limit(5) %>
       <% @games.each do |game| %>
-        <%if game.home_id == team.id && game.home_score > game.away_score %>
+      <% @away_team = Team.find(TeamGame.find_by(game_id: game.id).away_id) %>
+      <% @home_team = Team.find(TeamGame.find_by(game_id: game.id).home_id) %>
+
+        <%if @home_team == team && game.home_score > game.away_score %>
         <%= p "W" %>
-        <% elsif game.home_id == team.id && game.home_score < game.away_score %>
+        <% elsif @home_team == team && game.home_score < game.away_score %>
         <%= p "L" %>
-        <% elsif game.away_id == team.id && game.away_score > game.home_score %>
+        <% elsif @away_team == team && game.away_score > game.home_score %>
         <%= p "W" %>
         <% else %>
         <%= p "L" %>
