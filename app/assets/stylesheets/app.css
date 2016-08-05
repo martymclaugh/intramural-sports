@@ -1,0 +1,25 @@
+.row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+.row> [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+.col-md-4 {
+  margin: auto;
+  text-align: center;
+}
+.col-md-4> span {
+  padding-top: 50px;
+}
+.glyphicon.glyphicon-tasks {
+  font-size: 75px;
+  color: purple;
+}
+.table {
+  text-align: justify;
+}

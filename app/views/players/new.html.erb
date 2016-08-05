@@ -1,0 +1,29 @@
+<div class="register">
+  <%= form_for :player, url: "/players" do |f| %>
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+
+     <%= f.label :team %>
+     <%= f.text_field :team %>
+
+     <%= f.label :sport %>
+     <%= f.text_field :sport %>
+
+     <%= f.label :email %>
+     <%= f.email_field :email %>
+
+     <%= f.label :phone %>
+     <%= f.telephone_field :phone %>
+
+
+     <%= f.label :password %>
+     <%= f.password_field :password %>
+
+     <%= f.label :password_confirmation, "Confirmation" %>
+     <%= f.password_field :password_confirmation %>
+
+     <%= f.hidden_field :coach, :value => true %>
+
+     <%= f.submit "Register" %>
+   <% end %>
+ </div>

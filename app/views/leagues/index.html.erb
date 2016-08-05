@@ -1,0 +1,15 @@
+<div class='row'>
+
+
+
+<% @leagues.each do |league| %>
+<div class='col-md-4'>
+  <%= link_to league_teams_path(league) do %>
+  <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+  <h2><%= league.sport.capitalize %></h2>
+</div>
+<% end %>
+
+  <% end %>
+
+</div>
