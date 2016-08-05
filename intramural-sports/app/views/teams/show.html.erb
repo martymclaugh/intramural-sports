@@ -1,4 +1,4 @@
-<h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
+rails<h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
 <% @team.players.each do |player| %>
 <li><%= player.name %> <br>
 	<i>Phone Number: <%= player.phone %></i></li>
@@ -8,7 +8,8 @@
 	<% @team.games.each do |game| %>
 	<p>Game: <%= game.id %><br>
 		Location: <%= game.location %><br>
-		Date: <%= game.date %><br></p>
+		Date: <%= game.date.strftime('%v') %><br>
+		Time: <%= game.date.strftime('%r') %><br></p> 
 		<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
 		<% end %>
 
@@ -32,7 +33,7 @@
 			<% end %>
 		<% end %>
 
-		
+
 
 
 		<% if @league.sport == "basketball" && @team.players.length > 6 %>
@@ -87,7 +88,3 @@
 			<%= f.submit "Register" %>
 			<% end %>
 		<% end %>
-			
-			
-
-
