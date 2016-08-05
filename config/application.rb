@@ -15,6 +15,11 @@ require "bcrypt"
 require "haml"
 require 'dotenv'
 Dotenv.load
+require 'twilio-ruby'
+
+TWILIO_ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
+TWILIO_AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
+TWILIO_NUMBER = ENV['TWILIO_NUMBER']
 
 # require "rails/test_unit/railtie"
 
@@ -23,9 +28,15 @@ Dotenv.load
 Bundler.require(*Rails.groups)
 
 module IntramuralSports
-  class Application < Rails::Application
+	class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-  end
+
+
+    # Twilio.configure do |config|
+    # 	config.account_sid = ENV['TWILIO_SID']
+    # 	config.auth_token = ENV['TWILIO_SECRET_KEY']
+    # end
+end
 end

@@ -7,6 +7,5 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @league = League.find(params[:league_id])
-    # @game = Game.find()
   end
 end

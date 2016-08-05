@@ -20,17 +20,15 @@
               <% @home_team = Team.find(TeamGame.find_by(game_id: game.id).home_id) %>
 
               <%if @home_team == team && game.home_score > game.away_score %>
-              <%= p "W" %>
+              <%= "W" %>
               <% elsif @home_team == team && game.home_score < game.away_score %>
-              <%= p "L" %>
+              <%= "L" %>
               <% elsif @away_team == team && game.away_score > game.home_score %>
-              <%= p "W" %>
+              <%= "W" %>
               <% else %>
-              <%= p "L" %>
+              <%= "L" %>
               <% end %>
               <% end %></td>
           </tr>
-          <% p team %>
-          <!-- <p><%= link_to 'Team details', league_team_path(@league, team) %></p> -->
           <% end %>
 </div>
