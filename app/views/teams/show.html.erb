@@ -1,20 +1,50 @@
-<h1><%= @team.name %> - <i><%= @league.sport %></i></h1>
-<% @team.players.each do |player| %>
-<li><%= player.name %> <br>
-	<i>Phone Number: <%= player.phone %></i></li>
-	<% end %>
 
+<div class="row">
+<h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
+
+<% @team.players.each do |player| %>
+<tr>
+<td><%= player.name %> </td>
+	<td> <%= player.phone %></td>
+</tr>
+	<% end %>
+</table>
+
+<h1> Games </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Teams </th>
+            <th>Location</th>
+						<th>Date</th>
+						<th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
 
 	<% @team.games.each do |game| %>
-	<p>Game: <%= game.id %><br>
-		Location: <%= game.location %><br>
-		Date: <%= game.date %><br></p>
-		<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
+	<tr>
+	<td> <%= link_to league_game_path(@league, game) do  %><%= Team.find(TeamGame.find_by(game_id: game.id).home_id).name %> vs <%= Team.find(TeamGame.find_by(game_id: game.id).away_id).name%>
+	<%end%> </td>
+ <td><%= game.location %></td>
+		<td> <%= game.date.strftime('%v') %></td>
+	<td> <%= game.date.strftime('%r') %></td>
+</tr>
 		<% end %>
+	</table>
 
 
 
-	<% if current_user.coach == true %>
+<% if logged_in? %>
+	<% if current_user.coach == true && @team.players.include?(current_user) %>
 			<h2>Add Player to Team: </h2>
 			<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
 				<%= f.label :name %>
@@ -32,9 +62,7 @@
 			<% end %>
 
 
-
-
-		<% if @league.sport == "basketball" && @team.players.length > 6 %>
+		<% if @league.sport == "Basketball" && @team.players.length > 6 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
@@ -52,7 +80,7 @@
 			<%= f.submit "Register" %>
 			<% end %>
 
-		<% elsif @league.sport == "football" && @team.players.length > 1 %>
+		<% elsif @league.sport == "Football" && @team.players.length > 1 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
@@ -70,7 +98,7 @@
 			<%= f.submit "Create" %>
 			<% end %>
 
-		<% elsif @league.sport == "hockey" && @team.players.length > 10 %>
+		<% elsif @league.sport == "Hockey" && @team.players.length > 10 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
@@ -88,4 +116,7 @@
 			<%= f.submit "Create" %>
 			<% end %>
 		<% end %>
+
 	<% end %>
+<% end %>
+</div>

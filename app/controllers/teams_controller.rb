@@ -16,6 +16,4 @@ class TeamsController < ApplicationController
     p "=" * 100
     # @game = Game.find()
   end
-
-  
 end

@@ -20,6 +20,7 @@ require 'twilio-ruby'
 TWILIO_ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
 TWILIO_NUMBER = ENV['TWILIO_NUMBER']
+
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -31,7 +32,7 @@ module IntramuralSports
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-   
+
 
     # Twilio.configure do |config|
     # 	config.account_sid = ENV['TWILIO_SID']
