@@ -15,6 +15,7 @@ require "bcrypt"
 require "haml"
 require 'dotenv'
 Dotenv.load
+
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems

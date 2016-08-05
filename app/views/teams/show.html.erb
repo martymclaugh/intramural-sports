@@ -41,7 +41,7 @@
 
 
 
-
+<% if logged_in? %>
 	<% if current_user.coach == true && @team.players.include?(current_user) %>
 			<h2>Add Player to Team: </h2>
 			<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
@@ -116,5 +116,5 @@
 		<% end %>
 
 	<% end %>
-
+<% end %>
 </div>
