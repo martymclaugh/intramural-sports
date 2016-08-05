@@ -44,74 +44,88 @@
 				<% if logged_in? %>
 				<% if current_user.coach == true && @team.players.include?(current_user) %>
 				<h2>Add Player to Team: </h2>
+        <div class="form-group">
 				<%= form_for :player, url: league_team_players_path(@league, @team) do |f| %>
 				<%= f.label :name %>
-				<%= f.text_field :name %>
-
+				<%= f.text_field :name, class: "txt-group"  %>
+        </div>
+        <div class="form-group">
 				<%= f.label :email %>
-				<%= f.email_field :email %>
-
+				<%= f.email_field :email, class: "txt-group"  %>
+        </div>
+        <div class="form-group">
 				<%= f.label :phone %>
-				<%= f.telephone_field :phone %>
-
+				<%= f.telephone_field :phone, class: "txt-group"  %>
+        </div>
 				<%= f.hidden_field :team, :value => @team.id %>
-
-				<%= f.submit "Create" %>
+				<%= f.submit "Add Player" , class: "btn btn-default" %>
 				<% end %>
 
+        <% if @league.sport == "Basketball" && @team.players.length > 6 %>
+        <br><h2 class="form-group">Create Game:</h2>
+        <%= form_for :game, url: league_games_path(@league) do |f| %>
+        <div class="form-group">
+        <%= f.label :home_team %>
+        <%= f.text_field :home_team, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :away_team %>
+        <%= f.text_field :away_team, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :date %>
+        <%= f.date_select :date, class: "txt-group" %>
+        </div>
+        <%= f.submit "Create Game", class: "btn btn-default" %>
+        <% end %>
 
-				<% if @league.sport == "Basketball" && @team.players.length > 6 %>
-				<h2>Create Game: </h2>
-				<%= form_for :game, url: league_games_path(@league) do |f| %>
-				<%= f.label :home_team %>
-				<%= f.text_field :home_team %>
 
-				<%= f.label :away_team %>
-				<%= f.text_field :away_team %>
-
-				<%= f.label :address %>
-				<%= f.text_field :address %>
-
-				<%= f.label :date %>
-				<%= f.date_select :date %>
-
-				<%= f.submit "Register" %>
-				<% end %>
-
-		<% elsif @league.sport == "Football" && @team.players.length > 21 %>
-			<h2>Create Game: </h2>
-			<%= form_for :game, url: league_games_path(@league) do |f| %>
-			<%= f.label :home_team %>
-			<%= f.text_field :home_team %>
-
-				<%= f.label :away_team %>
-				<%= f.text_field :away_team %>
-
-				<%= f.label :address %>
-				<%= f.text_field :address %>
-
-				<%= f.label :date %>
-				<%= f.text_field :date, placeholder: "yyyy-mm-dd" %>
-
-				<%= f.submit "Create" %>
+		<% elsif @league.sport == "Football" && @team.players.length > 1 %>
+    <h2 class="form-group">Create Game:</h2>
+    <%= form_for :game, url: league_games_path(@league) do |f| %>
+    <div class="form-group">
+    <%= f.label :home_team %>
+    <%= f.text_field :home_team, class: "txt-group" %>
+    </div>
+    <div class="form-group">
+    <%= f.label :away_team %>
+    <%= f.text_field :away_team, class: "txt-group" %>
+    </div>
+    <div class="form-group">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "txt-group" %>
+    </div>
+    <div class="form-group">
+    <%= f.label :date %>
+    <%= f.date_select :date, class: "txt-group" %>
+    </div>
+    <%= f.submit "Create Game", class: "btn btn-default" %>
 				<% end %>
 
 				<% elsif @league.sport == "Hockey" && @team.players.length > 10 %>
-				<h2>Create Game: </h2>
-				<%= form_for :game, url: league_games_path(@league) do |f| %>
-				<%= f.label :home_team %>
-				<%= f.text_field :home_team %>
-
-				<%= f.label :away_team %>
-				<%= f.text_field :away_team %>
-
-				<%= f.label :address %>
-				<%= f.text_field :address %>
-
-				<%= f.label :date %>
-				<%= f.date_select :date %>
-
-				<%= f.submit "Create" %>
+        <h2 class="form-group">Create Game:</h2>
+        <%= form_for :game, url: league_games_path(@league) do |f| %>
+        <div class="form-group">
+        <%= f.label :home_team %>
+        <%= f.text_field :home_team, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :away_team %>
+        <%= f.text_field :away_team, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "txt-group" %>
+        </div>
+        <div class="form-group">
+        <%= f.label :date %>
+        <%= f.date_select :date, class: "txt-group" %>
+        </div>
+        <%= f.submit "Create Game", class: "btn btn-default" %>
 				<% end %>
 				<% end %>
 
