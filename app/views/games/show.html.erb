@@ -2,7 +2,9 @@
 <h1>Game <%=@game.id%></h1>
 <h3><%=@home_team.name%> vs <%=@away_team.name%></h3>
 <h4>Location:<%=@game.location%></h4>
-<h4>Date:<%=@game.date%></h4>
+<h4>Date:<%=@game.date.strftime('%v')%></h4>
+<h4>Time:<%=@game.date.strftime('%r')%></h4>
+
 <a href="http://maps.google.com/?q=<%=@game.location%>">Map </a>
 <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>

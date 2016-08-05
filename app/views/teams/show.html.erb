@@ -1,16 +1,43 @@
+<div class="row">
 <h1><%= @team.name %> - <i><%= League.find(@team.league_id).sport %></i></h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name </th>
+            <th>Contact</th>
+        </tr>
+    </thead>
+    <tbody>
 <% @team.players.each do |player| %>
-<li><%= player.name %> <br>
-	<i>Phone Number: <%= player.phone %></i></li>
+<tr>
+<td><%= player.name %> </td>
+	<td> <%= player.phone %></td>
+</tr>
 	<% end %>
+</table>
 
+<h1> Games </h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Teams </th>
+            <th>Location</th>
+						<th>Date</th>
+						<th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
 
 	<% @team.games.each do |game| %>
-	<p>Game: <%= game.id %><br>
-		Location: <%= game.location %><br>
-		Date: <%= game.date %><br></p>
-		<p><%= link_to 'Game details', league_game_path(@league, game) %></p>
+	<tr>
+	<td> <%= link_to league_game_path(@league, game) do  %><%= Team.find(game.home_id).name %> vs <%= Team.find(game.away_id).name%> <%end%> </td>
+ <td><%= game.location %></td>
+		<td> <%= game.date.strftime('%v') %></td>
+	<td> <%= game.date.strftime('%r') %></td>
+</tr>
 		<% end %>
+	</table>
+
 
 
 
@@ -30,8 +57,6 @@
 
 				<%= f.submit "Create" %>
 			<% end %>
-
-
 
 
 		<% if @league.sport == "Basketball" && @team.players.length > 6 %>
@@ -88,4 +113,7 @@
 			<%= f.submit "Create" %>
 			<% end %>
 		<% end %>
+
 	<% end %>
+
+</div>
