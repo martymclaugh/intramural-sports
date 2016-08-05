@@ -17,9 +17,8 @@ class PlayersController < ApplicationController
       end
     else
       player = Player.create(name: params[:player][:name], email: params[:player][:email], phone: params[:player][:phone], password: "123", coach: false)
-      p player
       PlayerTeam.create(player_id: player.id, team_id: params[:player][:team])
-      
+
       redirect_to "/leagues/#{Team.find(params[:player][:team]).league_id}/teams/#{params[:player][:team]}"
     end
   end
