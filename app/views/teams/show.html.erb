@@ -34,7 +34,7 @@
 
 
 
-		<% if @league.sport == "basketball" && @team.players.length > 6 %>
+		<% if @league.sport == "Basketball" && @team.players.length > 6 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
@@ -52,7 +52,7 @@
 			<%= f.submit "Register" %>
 			<% end %>
 
-		<% elsif @league.sport == "football" && @team.players.length > 1 %>
+		<% elsif @league.sport == "Football" && @team.players.length > 1 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
@@ -70,7 +70,7 @@
 			<%= f.submit "Create" %>
 			<% end %>
 
-		<% elsif @league.sport == "hockey" && @team.players.length > 10 %>
+		<% elsif @league.sport == "Hockey" && @team.players.length > 10 %>
 			<h2>Create Game: </h2>
 			<%= form_for :game, url: league_games_path(@league) do |f| %>
 			<%= f.label :home_team %>
