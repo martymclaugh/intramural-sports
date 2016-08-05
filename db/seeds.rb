@@ -5,6 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Player.delete_all
+League.delete_all
+Team.delete_all
+TeamGame.delete_all
+PlayerTeam.delete_all
 
 300.times do
   Player.create(name: Faker::Name.name, phone: Faker::PhoneNumber.phone_number, email: Faker::Internet.email, coach: false, password: '123')
