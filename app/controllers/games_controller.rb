@@ -26,15 +26,20 @@ class GamesController < ApplicationController
 	end
 
 	def create
-		p "$" * 150
-		p params
 		home_team = Team.find_by(name: params[:game][:home_team])
 		away_team = Team.find_by(name: params[:game][:away_team])
-		# @game = Game.create(game_params)
-		@game = Game.create(home_id: home_team.id, away_id: away_team.id, location: params[:game][:address], date: params[:game][:date], home_score: 0, away_score: 0)
+		p @game = Game.create!(location: params[:game][:address], date: params[:game][:date], home_score: 0, away_score: 0)
+		p @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id)
+
+		p @game.valid?
+		p "*" *100
 		p @game
 		@league = League.find(Team.find(@game.away_id).league_id)
-		redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
+		if @game.valid?
+			redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
+		else
+			redirect_to "/leagues/#{@league.id}/teams/#{home_team.id}"
+		end
 	end
 
 def update
