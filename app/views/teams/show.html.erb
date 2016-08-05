@@ -78,11 +78,11 @@
 				<%= f.submit "Register" %>
 				<% end %>
 
-				<% elsif @league.sport == "Football" && @team.players.length > 1 %>
-				<h2>Create Game: </h2>
-				<%= form_for :game, url: league_games_path(@league) do |f| %>
-				<%= f.label :home_team %>
-				<%= f.text_field :home_team %>
+		<% elsif @league.sport == "Football" && @team.players.length > 21 %>
+			<h2>Create Game: </h2>
+			<%= form_for :game, url: league_games_path(@league) do |f| %>
+			<%= f.label :home_team %>
+			<%= f.text_field :home_team %>
 
 				<%= f.label :away_team %>
 				<%= f.text_field :away_team %>
