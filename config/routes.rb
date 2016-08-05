@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'leagues#index'
   
   resources :sessions, only: [:new, :create, :destroy]
+  resources :messages
   resources :leagues do
     resources :games
     resources :teams do

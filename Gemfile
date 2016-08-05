@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'haml'
 gem 'dotenv'
+gem 'twilio-ruby'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 # Use Capistrano for deployment
