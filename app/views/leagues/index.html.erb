@@ -2,14 +2,24 @@
 
 
 
-<% @leagues.each do |league| %>
-<div class='col-md-4'>
-  <%= link_to league_teams_path(league) do %>
-  <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
-  <h2><%= league.sport.capitalize %></h2>
-</div>
-<% end %>
+  <% @leagues.each do |league| %>
+  <div class='col-md-4'>
+    <%= link_to league_teams_path(league) do %>
+    <%  if league.sport.capitalize == "Basketball" %>
+    <%= image_tag "bb.png", width:'200' %>
+    <%  elsif league.sport.capitalize == "Football" %>
+    <%= image_tag "afb.png", width:'200' %>
+    <%  elsif league.sport.capitalize == "Hockey" %>
+    <%= image_tag "hoc.png", width:'200'%>
+    <%  else %>
+    <%= image_tag "spt.png", width:'300' %>
+    <% end %>
+    <h2><%= league.sport.capitalize %></h2>
+
+  </div>
+  <% end %>
 
   <% end %>
 
 </div>
+
