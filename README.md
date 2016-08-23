@@ -1,6 +1,6 @@
 # README
-Team Name: Intramuralizer
-Team Members: Marty McLaughlin, Simon Nim, Erika Yingling, Raj Desai
+## gIntramuralizer
+### Team Members: Marty McLaughlin, Simon Nim, Erika Yingling, Raj Desai
 
 User Stories:
 ** page that displays leagues
