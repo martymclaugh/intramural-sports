@@ -1,15 +1,15 @@
 # README
-## gIntramuralizer
-### Team Members: Marty McLaughlin, Simon Nim, Erika Yingling, Raj Desai
+## Intramuralizer
+### Team Members: Marty McLaughlin, Simon Nim, Erica Yingling, Raj Desai
 
 User Stories:
-** page that displays leagues
-** page that displays teams
-** page that displays players, games, stats
-** game page that displays location, time, and map
-  ** if after game time, coach is able to post scores.
-  ** scores when game is done
-** only coach can schedule games, add team Members, and list final scores
+* page that displays leagues
+* page that displays teams
+* page that displays players, games, stats
+* game page that displays location, time, and map
+  * if after game time, coach is able to post scores.
+  * scores when game is done
+* only coach can schedule games, add team Members, and list final scores
 
 
 ### * Intramuralizer is a convenient way for coaches and players in Intramural sports teams to view leagues, teams, games, and win/loss Records
