@@ -1,5 +1,5 @@
 # README
-Team Name: Diamond
+Team Name: Intramuralizer
 Team Members: Marty McLaughlin, Simon Nim, Erika Yingling, Raj Desai
 
 User Stories:
@@ -12,29 +12,28 @@ User Stories:
 ** only coach can schedule games, add team Members, and list final scores
 
 
+### * Intramuralizer is a convenient way for coaches and players in Intramural sports teams to view leagues, teams, games, and win/loss Records
+### * New users may create and update teams, add players, and create a date and time location
 
+### Technologies Include:
+* Ruby on Rails
+* Twilio API
+* Google Maps API
+* HTML
+* CSS
+* Bootstrap
 
+### Features Include:
 
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## * Front Page Viewing of leagues
+![alt tag](http://i.imgur.com/IPQ3zGy.png)
+## * User Authentication and Registration of team
+![alt tag](http://i.imgur.com/DrKDcp2.png)
+## * Display players on team with their phone numbers, and ability to add member to the team
+![alt tag](http://i.imgur.com/4lptoKo.png)
+## * Viewing win/loss record and viewing players on another team
+![alt tag](http://i.imgur.com/zycUE8X.png)
+## * Viewing games and locations
+![alt tag](http://i.imgur.com/bv7hCHU.png)
+## * Upon creating a game, Twilio sends a message with all the information to each player
+![alt tag](http://i.imgur.com/DKzw7bj.jpg)
