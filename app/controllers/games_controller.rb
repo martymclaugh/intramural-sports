@@ -40,7 +40,7 @@ class GamesController < ApplicationController
   end
 
   def send_text_message(home_team, away_team, location, date)
-    numbers_to_send_to = ["+14156761348", "+19163979287", "+16109384104", "+12405430299", "+16109384104"]
+    numbers_to_send_to = ["+12405430299"]
     twilio_body = "#{home_team.name} VS #{away_team.name} located at: #{location} Game starts at: #{date}. Be there or B^2!"
 
     twilio_sid = ENV['TWILIO_ACCOUNT_SID']
