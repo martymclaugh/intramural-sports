@@ -1,0 +1,23 @@
+<h1> Games </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Teams </th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @team.games.each do |game| %>
+    <tr>
+      <td>
+        <%= link_to league_game_path(@league, game) do  %><%= Team.find(TeamGame.find_by(game_id: game.id).home_id).name %> vs <%= Team.find(TeamGame.find_by(game_id: game.id).away_id).name%>
+        <%end%>
+      </td>
+      <td><%= game.location %></td>
+      <td> <%= game.date.strftime('%v') %></td>
+      <td> <%= game.date.strftime('%r') %></td>
+    </tr>
+    <% end %>
+</table>

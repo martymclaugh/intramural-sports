@@ -1,34 +1,32 @@
-
 <div id="teams-games">
-<h1><%= @league.sport.capitalize %></h1>
-<table class="table">
+  <h1><%= @league.sport.capitalize %></h1>
+  <table class="table">
     <thead>
-        <tr>
-            <th>  Team Name </th>
-            <th>Number of Player</th>
-            <th>Results of Last 5 games</th>
-        </tr>
+      <tr>
+        <th>  Team Name </th>
+        <th>Number of Player</th>
+        <th>Results of Last 5 games</th>
+      </tr>
     </thead>
     <tbody>
-        <% @teams.each do |team| %>
-        <tr>
-            <td><%= link_to league_team_path(@league, team) do %><%= team.name %><% end %></td>
-            <td><%= team.players.count %></td>
-            <td><% @games = team.games.limit(5) %>
-              <% @games.each do |game| %>
-              <% @away_team = Team.find(TeamGame.find_by(game_id: game.id).away_id) %>
-              <% @home_team = Team.find(TeamGame.find_by(game_id: game.id).home_id) %>
-
-              <%if @home_team == team && game.home_score > game.away_score %>
-              <%= "W" %>
-              <% elsif @home_team == team && game.home_score < game.away_score %>
-              <%= "L" %>
-              <% elsif @away_team == team && game.away_score > game.home_score %>
-              <%= "W" %>
-              <% else %>
-              <%= "L" %>
-              <% end %>
-              <% end %></td>
-          </tr>
+      <% @teams.each do |team| %>
+      <tr>
+        <td><%= link_to league_team_path(@league, team) do %><%= team.name %><% end %></td>
+        <td><%= team.players.count %></td>
+        <td><% @games = team.games.limit(5) %>
+          <% @games.each do |game| %>
+          <% @away_team = Team.find(TeamGame.find_by(game_id: game.id).away_id) %>
+          <% @home_team = Team.find(TeamGame.find_by(game_id: game.id).home_id) %>
+          <%if @home_team == team && game.home_score > game.away_score %>
+          <%= "W" %>
+          <% elsif @home_team == team && game.home_score < game.away_score %>
+          <%= "L" %>
+          <% elsif @away_team == team && game.away_score > game.home_score %>
+          <%= "W" %>
+          <% else %>
+          <%= "L" %>
           <% end %>
-</div>
+        <% end %></td>
+      </tr>
+      <% end %>
+    </div>
