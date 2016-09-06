@@ -16,7 +16,7 @@
                 <%= render partial:"games/addgame" %>
                 <% elsif @league.sport == "Football" && @team.players.length > 1 %>
                 <%= render partial:"games/addgame" %>
-                <% elsif @league.sport == "Hockey" && @team.players.length > 10 %>
+                <% elsif @league.sport == "Hockey" && @team.players.length > 0 %>
                 <%= render partial:"games/addgame" %>
                 <% end %>
             <% end %>
