@@ -3,12 +3,15 @@
         <%= render partial:"players/showplayers" %>
 
         <% if @team.games.count > 0 %>
-        <%= render partial:"games/showgames" %>
+          <%= render partial:"games/showgames" %>
         <% end %>
 
         <% if logged_in? %>
-            <% if current_user.coach == true && @team.players.include?(current_user) %>
-                <%= render partial:"players/addplayer" %>
+            <% if current_user == @team.players.find_by(coach: true) %>
+                <div id="add-player-form">
+                  <%= render partial:"players/addplayer" %>
+                </div>
+
                 <% if @league.sport == "Basketball" && @team.players.length > 6 %>
                 <%= render partial:"games/addgame" %>
                 <% elsif @league.sport == "Football" && @team.players.length > 1 %>

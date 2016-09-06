@@ -40,12 +40,12 @@
  </script>
 
  <% if logged_in? && @game.date < DateTime.now %>
- <% if @game.home_score == 0 && @game.away_score == 0 %>
- <p>GAME FINISHED! Submit score below!</p>
- <%= form_for :game, :method => :PUT do |f| %>
- <%= @home_team.name %> Score: <%= text_field_tag :home_score %>
- <%= @away_team.name %> Score: <%= text_field_tag :away_score %>
- <%= submit_tag "Submit" %>
+   <% if @game.home_score == 0 && @game.away_score == 0 %>
+   <p>GAME FINISHED! Submit score below!</p>
+   <%= form_for :game, :method => :PUT do |f| %>
+   <%= @home_team.name %> Score: <%= text_field_tag :home_score %>
+   <%= @away_team.name %> Score: <%= text_field_tag :away_score %>
+   <%= submit_tag "Submit" %>
  <% end %>
  <% else %>
  Home Score: <%= @game.home_score %> Away Score: <%= @game.away_score %>

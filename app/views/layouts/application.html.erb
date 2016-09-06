@@ -29,7 +29,6 @@
 
 		      <ul class="nav navbar-nav navbar-right">
 						<% if logged_in? %>
-						<% p current_user %>
 					<li><a href="/">Hi <%= current_user.name.capitalize %>! </a>  </li>  <li><%= link_to "Logout", '/logout' %></li>
 					<% else %>
 					<li><%= link_to 'Login', '/login' %> </li> <li> <%= link_to 'Signup', '/signup' %> </li>

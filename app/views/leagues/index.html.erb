@@ -1,13 +1,4 @@
-<div class="container">
-  <div class="jumbotron">
-    <h1>Intramuralizer</h1>
-    <h3>A user-friendly platform where coaches and the community can keep track of intramural sports teams.</h3>
-    <div>
-      <p>Coaches can create teams, set up games, send reminders through text, and report game scores.</p>
-      <p>All players and community members have access to past and upcoming games, teams, and players.</p>
-    </div>
-  </div>
-</div>
+<%= render partial:"leagues/intramuralizer" %>
 
 <div class='row'>
   <% @leagues.each do |league| %>
