@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+
   def authorize
     redirect_to '/login' unless current_user
   end
@@ -14,4 +15,5 @@ class ApplicationController < ActionController::Base
     session[:player_id].present?
   end
   helper_method :logged_in?
+
 end
