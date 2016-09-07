@@ -37,7 +37,9 @@ class GamesController < ApplicationController
   def create
     home_team = Team.find_by(name: params[:game][:home_team])
     away_team = Team.find_by(name: params[:game][:away_team])
-    @game = Game.create(location: params[:game][:address], date: DateTime.now, home_score: 0, away_score: 0)
+    date = Date.new(params[:game]["date(1i)"].to_i, params[:game]["date(2i)"].to_i, params[:game]["date(3i)"].to_i)
+    time = Time.new(params[:game]["time(1i)"].to_i, params[:game]["time(2i)"].to_i, params[:game]["time(3i)"].to_i, params[:game]["time(4i)"].to_i, params[:game]["time(5i)"].to_i, 0, "-07:00").getlocal
+    @game = Game.create(location: params[:game][:address], date: date, time: time, home_score: 0, away_score: 0)
     @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
     @league = League.find(home_team.league_id)
       if @game.valid?
