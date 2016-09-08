@@ -12,12 +12,24 @@
                   <%= render partial:"players/addplayer" %>
                 </div>
 
-                <% if @league.sport == "Basketball" && @team.players.length > 6 %>
-                <%= render partial:"games/addgame" %>
-                <% elsif @league.sport == "Football" && @team.players.length > 1 %>
-                <%= render partial:"games/addgame" %>
-                <% elsif @league.sport == "Hockey" && @team.players.length > 0 %>
-                <%= render partial:"games/addgame" %>
+                <% if @league.sport == "Basketball" %>
+                    <% if @team.players.length >= 6 %>
+                        <%= render partial:"games/addgame" %>
+                    <% else %>
+                        <h2><small>Must have at least 6 players to start a game.</small></h2>
+                    <% end %>
+                <% elsif @league.sport == "Football" %>
+                    <% if @team.players.length >= 12 %>
+                        <%= render partial:"games/addgame" %>
+                    <% else %>
+                        <h2><small>Must have at least 12 players to start a game.</small></h2>
+                    <% end %>
+                <% elsif @league.sport == "Hockey" %>
+                    <% if @team.players.length >= 0 %>
+                        <%= render partial:"games/addgame" %>
+                    <% else %>
+                        <h2><small>Must have at least 6 players to start a game.</small></h2>
+                    <% end %>
                 <% end %>
             <% end %>
         <% end %>
