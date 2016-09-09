@@ -1,21 +1,3 @@
-.row {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-}
-.row> [class*='col-'] {
-  display: flex;
-  flex-direction: column;
-}
-.col-md-4 {
-  margin: auto;
-  text-align: center;
-}
-.col-md-4> span {
-  padding-top: 50px;
-}
 .glyphicon.glyphicon-tasks {
   font-size: 75px;
   color: purple;
@@ -24,36 +6,18 @@
   text-align: justify;
 }
 
-#teams-games {
-  padding-left: 10%;
-}
-
-.login {
-  padding-left: 10%;
-  padding: 25px;
-  position: fixed;
-  width: 30%;
-}
-
-.form-group{
-  padding-left: 5%;
+div> [id*='-form'] {
+  border-style: solid;
+  border-width: .1px;
+  border-color: #d3d3d3;
+  padding: 2%;
+  margin-bottom: 5%;
+  margin-right: 20%;
 }
 
 .txt-group {
   padding-left: 5%;
   display: block;
-}
-
-.form-login {
-    background-color: #EDEDED;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 15px;
-    border-color:#d2d2d2;
-    border-width: 5px;
-    box-shadow:0 1px 0 #cfcfcf;
 }
 
 .wrapper {

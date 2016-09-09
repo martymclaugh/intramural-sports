@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name </th>
+      <th>Contact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @team.players.each do |player| %>
+    <tr>
+      <td><%= player.name %> </td>
+      <td> <%= player.phone %></td>
+    </tr>
+    <% end %>
+</table>
