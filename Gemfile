@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use postgresql as the database for Active Record
@@ -14,6 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'ffaker'
 gem 'faker'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -28,6 +29,9 @@ gem 'dotenv'
 gem 'twilio-ruby'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'geokit'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

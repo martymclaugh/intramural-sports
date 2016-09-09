@@ -1,7 +1,6 @@
+<%= render partial:"leagues/intramuralizer" %>
+
 <div class='row'>
-
-
-
   <% @leagues.each do |league| %>
   <div class='col-md-4'>
     <%= link_to league_teams_path(league) do %>
