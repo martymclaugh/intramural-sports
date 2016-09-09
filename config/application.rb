@@ -1,7 +1,10 @@
 require_relative 'boot'
 
+require 'ffaker'
 require 'faker'
 require "rails"
+require 'geokit'
+require 'gon'
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -21,6 +24,8 @@ TWILIO_ACCOUNT_SID = ENV['TWILIO_ACCOUNT_SID']
 TWILIO_AUTH_TOKEN = ENV['TWILIO_AUTH_TOKEN']
 TWILIO_NUMBER = ENV['TWILIO_NUMBER']
 
+Geokit::Geocoders::GoogleGeocoder.api_key = ENV['MAP_KEY']
+Geokit::Geocoders::provider_order = [:ca, :google]
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
