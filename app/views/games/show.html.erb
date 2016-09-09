@@ -1,43 +1,55 @@
+  <%= include_gon %>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+  </head>
+
 <div id="teams-games">
   <h3><%=@league.sport%> League</h3>
   <h1>Game <%=@game.id%></h1>
   <h3><%=@home_team.name%> vs <%=@away_team.name%></h3>
-  <h4>Location:<%=@game.location%></h4>
+  <h4>Location:<%=@game.address%></h4>
   <h4>Date:<%=@game.date.strftime('%v')%></h4>
   <h4>Time:<%=@game.time.strftime('%r')%></h4>
 
-  <a href="http://maps.google.com/?q=<%=@game.location%>">Map </a>
-  <!-- <div id="googleMap" style="width:500px;height:380px;"></div> -->
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-  <script src="http://maps.googleapis.com/maps/api/js?key=<%=ENV['MAP_KEY']%>"
-   type="text/javascript"></script>
-   <div id="map" style="width: 400px; height: 300px;"></div>
+  <a href="http://maps.google.com/?q=<%=@game.address%>">Map </a>
 
-   <script type="text/javascript">
+  <div id="map-container">
+    <div id="map"></div>
+  </div>
 
-     var address = "<% @game.location %>";
+<script src="//maps.google.com/maps/api/js?v=3.24&key=AIzaSyDNxSlZZdYh_jO8HsYJGkQlLnNEwKqEYjo"></script>
+
+<script type="text/javascript">
 
 
-     var map = new google.maps.Map(document.getElementById('map'), {
-       mapTypeId: google.maps.MapTypeId.TERRAIN,
-       zoom: 16
-     });
+  $(document).ready(function() {
+    initMap();
+    });
 
-     var geocoder = new google.maps.Geocoder();
+    function initMap() {
+      $('#teams-games').ready(function(event) {
+        console.log("YASSSS")
+        $.ajax({
+            url: '/leagues/<%=@league.id%>/games/<%=@game.id%>',
+            method: 'GET',
+            data: false
+          })
+          .done(function(serverData) {
+              var lat = parseInt(serverData[0])
+              var lng = parseInt(serverData[1])
+              var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: lat, lng: lng},
+                zoom: 12
+              });
+          })
+      })
+    }
 
-     geocoder.geocode({
-      'address': address
-    },
-    function(results, status) {
-      if(status == google.maps.GeocoderStatus.OK) {
-       new google.maps.Marker({
-        position: results[0].geometry.location,
-        map: map
-      });
-       map.setCenter(results[0].geometry.location);
-     }
-   });
- </script>
+</script>
+
+
+
 
  <% if logged_in? && @game.date < DateTime.now %>
    <% if @game.home_score == 0 && @game.away_score == 0 %>

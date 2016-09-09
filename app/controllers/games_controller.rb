@@ -22,21 +22,7 @@ class GamesController < ApplicationController
   def new
     @team = Team.find_by(id: PlayerTeam.find_by(player_id: current_user.id).team_id)
     if request.xhr?
-      if params[:game][:home_team]
-        @home_team = Team.find_by(name: params[:game][:home_team])
-        if @home_team != @team
-          respond_to do |format|
-            format.json { render json: [@team.name] }
-          end
-        end
-      elsif params[:game][:away_team]
-        @away_team = Team.find_by(name: params[:game][:away_team])
-        if @away_team != @team
-          respond_to do |format|
-            format.json { render json: [@team.name] }
-          end
-        end
-      end
+      render json: [@team.name]
     end
   end
 
@@ -45,11 +31,11 @@ class GamesController < ApplicationController
     away_team = Team.find_by(name: params[:game][:away_team])
     date = Date.new(params[:game]["date(1i)"].to_i, params[:game]["date(2i)"].to_i, params[:game]["date(3i)"].to_i)
     time = Time.new(params[:game]["time(1i)"].to_i, params[:game]["time(2i)"].to_i, params[:game]["time(3i)"].to_i, params[:game]["time(4i)"].to_i, params[:game]["time(5i)"].to_i, 0, "-07:00").getlocal
-    @game = Game.create(location: params[:game][:address], date: date, time: time, home_score: 0, away_score: 0)
+    @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
     @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
     @league = League.find(home_team.league_id)
-      if @game.valid?
-        send_text_message(home_team, away_team, @game.location, @game.date)
+      if @game.save
+        send_text_message(home_team, away_team, @game.address, @game.date)
         redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
       else
         redirect_to "/leagues/#{@league.id}/teams/#{home_team.id}"

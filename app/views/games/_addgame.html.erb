@@ -1,6 +1,7 @@
 <div id="game-form">
 <h2 class="form-group">Create Game:</h2>
   <%= form_for :game, url: league_games_path(@league) do |f| %>
+    <div class="team-group">
     <div class="form-group">
       <%= f.label :home_team %>
       <%= f.select(:home_team) do %>
@@ -17,9 +18,10 @@
         <% end %>
       <% end %>
     </div>
+    </div>
     <div class="form-group">
-      <%= f.label :address %>
-      <%= f.text_field :address, class: "txt-group" %>
+      <%= f.label :location%>
+      <%= f.text_field :location, class: "txt-group" %>
     </div>
     <div class="form-group">
       <%= f.label :date %>
