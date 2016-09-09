@@ -1,5 +1,4 @@
-  <%= include_gon %>
-  <head>
+<head>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
   </head>
@@ -29,7 +28,6 @@
 
     function initMap() {
       $('#teams-games').ready(function(event) {
-        console.log("YASSSS")
         $.ajax({
             url: '/leagues/<%=@league.id%>/games/<%=@game.id%>',
             method: 'GET',

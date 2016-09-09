@@ -30,7 +30,7 @@ class GamesController < ApplicationController
     home_team = Team.find_by(name: params[:game][:home_team])
     away_team = Team.find_by(name: params[:game][:away_team])
     date = Date.new(params[:game]["date(1i)"].to_i, params[:game]["date(2i)"].to_i, params[:game]["date(3i)"].to_i)
-    time = Time.new(params[:game]["time(1i)"].to_i, params[:game]["time(2i)"].to_i, params[:game]["time(3i)"].to_i, params[:game]["time(4i)"].to_i, params[:game]["time(5i)"].to_i, 0, "-07:00").getlocal
+    time = Time.new(params[:game]["time(1i)"].to_i, params[:game]["time(2i)"].to_i, params[:game]["time(3i)"].to_i, params[:game]["time(4i)"].to_i, params[:game]["time(5i)"].to_i, 0, "-07:00")
     @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
     @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
     @league = League.find(home_team.league_id)
@@ -52,11 +52,13 @@ class GamesController < ApplicationController
   end
 
   def send_text_message(home_team, away_team, location, date)
-    game_players = home_team.players + away_team.players
-    numbers_to_send_to = []
-    game_players.each do |player|
-      numbers_to_send_to << player.phone
-    end
+    # Uncomment lines below to text entire team
+    # game_players = home_team.players + away_team.players
+    # numbers_to_send_to = []
+    # game_players.each do |player|
+    #   numbers_to_send_to << player.phone
+    # end
+    numbers_to_send_to = current_user.phone
     twilio_body = "#{home_team.name} VS #{away_team.name} located at: #{location} Game starts at: #{date}. Be there or B^2!"
 
     twilio_sid = ENV['TWILIO_ACCOUNT_SID']
