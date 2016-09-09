@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  include Geokit::Geocoders
+
   def index
     @games = Game.all
   end
@@ -8,6 +10,10 @@ class GamesController < ApplicationController
     @home_team = Team.find(TeamGame.find_by(game_id: @game.id).home_id)
     @away_team = Team.find(TeamGame.find_by(game_id: @game.id).away_id)
     @league = League.find(@home_team.league_id)
+    @location = MultiGeocoder.geocode(@game.address).ll.split(',')
+    if request.xhr?
+      render json: @location
+    end
   end
 
   def edit
