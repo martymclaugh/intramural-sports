@@ -7,6 +7,10 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @date = @game.date.strftime('%v')
+    @time = @game.time.strftime('%r')
+    p @date
+    p @time
     @home_team = Team.find(TeamGame.find_by(game_id: @game.id).home_id)
     @away_team = Team.find(TeamGame.find_by(game_id: @game.id).away_id)
     @league = League.find(@home_team.league_id)
@@ -27,14 +31,12 @@ class GamesController < ApplicationController
   end
 
   def create
-    p params
-    p "***" *50
-    p params[:game][:date_time][6..9]
     home_team = Team.find_by(name: params[:game][:home_team])
     away_team = Team.find_by(name: params[:game][:away_team])
     date = Date.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i)
-    p date
-    time = Time.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i, params[:game][:date_time][11..12], params[:game][:date_time][14..15])
+    time = Time.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i, (params[:game][:date_time][11..12].to_i - 7), params[:game][:date_time][14..15].to_i)
+    p time
+    p "***" *50
     @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
     @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
     @league = League.find(home_team.league_id)
