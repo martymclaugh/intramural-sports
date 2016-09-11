@@ -1,7 +1,7 @@
 # README
 ## Intramuralizer
 ### Team Members: Marty McLaughlin, Simon Nim, Erica Yingling, Raj Desai
-
+###  Live on Heroku at: https://intramuralizer.herokuapp.com/
 User Stories:
 * page that displays leagues
 * page that displays teams
