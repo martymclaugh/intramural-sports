@@ -24,15 +24,13 @@
         <%= f.text_field :location, class: "txt-group" %>
     </div>
     <div style="width:206px;" class="form-group">
-        <label for="">Date And Time</label>
-        <div class="form-group">
+        <label for="date_time">Date And Time</label>
             <div class='input-group date' id='datetimepicker8'>
-                <input style="height: 26.67px;" type='text' class="form-control"/>
-                <span class="input-group-addon">
+                <%= f.text_field :date_time, class: "txt-group", style: "height:auto;" %>
+                <span style="height:auto;" class="input-group-addon">
                     <span class="fa fa-calendar"></span>
                 </span>
             </div>
-        </div>
         <script type="text/javascript">
             $(function () {
                 $('#datetimepicker8').datetimepicker({
@@ -47,6 +45,6 @@
         </script>
     </div>
     <%= f.submit "Create Game", class: "btn btn-default" %>
-    <% end %>
 </div>
 </div>
+<% end %>

@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration[5.0]
       t.integer :away_score
       t.string :address
       t.date :date, null: false
-      t.time :time, null: false
+      t.string :time, null: false
 
       t.timestamps
     end
