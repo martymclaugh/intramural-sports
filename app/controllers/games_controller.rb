@@ -29,20 +29,21 @@ class GamesController < ApplicationController
   def create
     p params
     p "***" *50
-    p params[:game][:date_time][0..1]
-    # home_team = Team.find_by(name: params[:game][:home_team])
-    # away_team = Team.find_by(name: params[:game][:away_team])
-    # date = Date.new(params[:game][:date_time][0..1].to_i, params[:game]["date(2i)"].to_i, params[:game]["date(3i)"].to_i)
-    # time = Time.new(params[:game]["time(1i)"].to_i, params[:game]["time(2i)"].to_i, params[:game]["time(3i)"].to_i, params[:game]["time(4i)"].to_i, params[:game]["time(5i)"].to_i, 0, "-07:00")
-    # @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
-    # @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
-    # @league = League.find(home_team.league_id)
-    #   if @game.save
-    #     send_text_message(home_team, away_team, @game.address, @game.date)
-    #     redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
-    #   else
-    #     redirect_to "/leagues/#{@league.id}/teams/#{home_team.id}"
-    #   end
+    p params[:game][:date_time][6..9]
+    home_team = Team.find_by(name: params[:game][:home_team])
+    away_team = Team.find_by(name: params[:game][:away_team])
+    date = Date.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i)
+    p date
+    time = Time.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i, params[:game][:date_time][11..12], params[:game][:date_time][14..15])
+    @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
+    @team_game = TeamGame.create(away_id: away_team.id, home_id: home_team.id, game_id: @game.id)
+    @league = League.find(home_team.league_id)
+      if @game.save
+        send_text_message(home_team, away_team, @game.address, @game.date)
+        redirect_to "/leagues/#{@league.id}/games/#{@game.id}"
+      else
+        redirect_to "/leagues/#{@league.id}/teams/#{home_team.id}"
+      end
   end
 
   def update
