@@ -15,7 +15,6 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
-//= require moment/<locale>
 //= require_tree .
 //= require_self
 
