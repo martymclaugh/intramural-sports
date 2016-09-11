@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+//= require_self
 
 $('#game-form form').ready(function() {
 checkOptions();
@@ -76,8 +77,3 @@ function checkOptions() {
     })
   })
 }
-
-
-
-
-

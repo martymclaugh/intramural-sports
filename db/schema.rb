@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160805181650) do
     t.integer  "away_score"
     t.string   "address"
     t.date     "date",       null: false
-    t.time     "time",       null: false
+    t.string   "time",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
