@@ -26,14 +26,16 @@ User Stories:
 ### Features Include:
 
 ## * Front Page Viewing of leagues
-![alt tag](http://i.imgur.com/IPQ3zGy.png)
+![alt tag](http://i.imgur.com/67zBW5C.png)
 ## * User Authentication and Registration of team
-![alt tag](http://i.imgur.com/DrKDcp2.png)
+![alt tag](http://i.imgur.com/HuvKk68.png)
 ## * Display players on team with their phone numbers, and ability to add member to the team
-![alt tag](http://i.imgur.com/4lptoKo.png)
+![alt tag](http://i.imgur.com/S5IhR0m.png)
 ## * Viewing win/loss record and viewing players on another team
 ![alt tag](http://i.imgur.com/zycUE8X.png)
 ## * Viewing games and locations
 ![alt tag](http://i.imgur.com/bv7hCHU.png)
+## * Game Display after creation
+![alt tag](http://i.imgur.com/hHvAN3K.png)
 ## * Upon creating a game, Twilio sends a message with all the information to each player
-![alt tag](http://i.imgur.com/DKzw7bj.jpg)
+![alt tag](http://i.imgur.com/hb88QCK.jpg)
