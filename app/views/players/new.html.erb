@@ -15,6 +15,9 @@
             <%= f.label :sport %>
             <%= f.text_field :sport, class: "txt-group", placeholder: "Football, Basketball, or Hockey" %>
          </div>
+         <% if flash[:notice] %>
+          <div style="color:red;" class="notice"><%= flash[:notice] %></div>
+        <% end %>
          <div class="form-group">
             <%= f.label :email %>
             <%= f.email_field :email, class: "txt-group", placeholder: "Email"%>
