@@ -32,9 +32,9 @@ class GamesController < ApplicationController
     home_team = Team.find_by(name: params[:game][:home_team])
     p "home team!"
     p home_team
+    away_team = Team.find_by(name: params[:game][:away_team])
     p "away team!"
     p away_team
-    away_team = Team.find_by(name: params[:game][:away_team])
     date = Date.new(params[:game][:date_time][6..9].to_i, params[:game][:date_time][0..1].to_i, params[:game][:date_time][3..4].to_i)
     time = params[:game][:date_time][11..params[:game][:date_time].length - 1].strip
     @game = Game.create(address: params[:game][:location], date: date, time: time, home_score: 0, away_score: 0)
