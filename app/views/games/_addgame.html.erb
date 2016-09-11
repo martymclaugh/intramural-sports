@@ -24,12 +24,33 @@
       <%= f.text_field :location, class: "txt-group" %>
     </div>
     <div class="form-group">
-      <%= f.label :date %>
-      <%= f.date_select :date, class: "txt-group" %>
-    </div>
-    <div class="form-group">
-      <%= f.label :time %>
-      <%= f.time_select :time, class: "txt-group" %>
+      <label for="">Date And Time</label>
+      <div id="datetimepicker" class="input-append date">
+        <%= f.text_field :date_time, class: "date and time" %>
+        <span class="add-on time-form">
+          <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+        </span>
+      </div>
+      <script type="text/javascript"
+       src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js">
+      </script>
+      <script type="text/javascript"
+       src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js">
+      </script>
+      <script type="text/javascript"
+       src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.min.js">
+      </script>
+      <script type="text/javascript"
+       src="http://tarruda.github.com/bootstrap-datetimepicker/assets/js/bootstrap-datetimepicker.pt-BR.js">
+      </script>
+      <script type="text/javascript">
+        $('#datetimepicker').datetimepicker({
+          format: 'MM/dd/yyyy hh:mm:ss',
+          language: 'e',
+          pick12HourFormat: true
+
+        });
+      </script>
     </div>
         <%= f.submit "Create Game", class: "btn btn-default" %>
   <% end %>
