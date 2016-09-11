@@ -34,11 +34,18 @@
             data: false
           })
           .done(function(serverData) {
-              var lat = parseInt(serverData[0])
-              var lng = parseInt(serverData[1])
+            console.log(serverData)
+              var latLng = {lat: parseFloat(serverData[0]), lng: parseFloat(serverData[1])};
+              console.log(latLng)
               var map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: lat, lng: lng},
-                zoom: 12
+                zoom: 16,
+                center: latLng
+              });
+
+              var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: 'Game Location'
               });
           })
       })
