@@ -9,8 +9,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @date = @game.date.strftime('%v')
     @time = @game.time
-    @home_team = Team.find(@game.teams[0])
-    @away_team = Team.find(@game.teams[1])
+    @home_team = Team.find(@game.teams[0].id)
+    @away_team = Team.find(@game.teams[1].id)
     @league = League.find(@home_team.league_id)
     @location = MultiGeocoder.geocode(@game.address).ll.split(',')
     if request.xhr?
