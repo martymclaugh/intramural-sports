@@ -1,56 +1,52 @@
 <div id="game-form">
-<h2 class="form-group">Create Game:</h2>
-  <%= form_for :game, url: league_games_path(@league) do |f| %>
+    <h2 class="form-group">Create Game:</h2>
+    <%= form_for :game, url: league_games_path(@league) do |f| %>
     <div class="team-group">
-    <div class="form-group">
-      <%= f.label :home_team %>
-      <%= f.select(:home_team) do %>
-        <% @league.teams.each do |c| -%>
-          <%= content_tag(:option, c.name, value: c.name) %>
-        <% end %>
-      <% end %>
+        <div class="form-group">
+            <%= f.label :home_team %>
+            <%= f.select(:home_team) do %>
+            <% @league.teams.each do |c| -%>
+            <%= content_tag(:option, c.name, value: c.name) %>
+            <% end %>
+            <% end %>
+        </div>
+        <div class="form-group">
+            <%= f.label :away_team %>
+            <%= f.select(:away_team) do %>
+            <% @league.teams.each do |c| -%>
+            <%= content_tag(:option, c.name, value: c.name) %>
+            <% end %>
+            <% end %>
+        </div>
     </div>
     <div class="form-group">
-      <%= f.label :away_team %>
-      <%= f.select(:away_team) do %>
-        <% @league.teams.each do |c| -%>
-          <%= content_tag(:option, c.name, value: c.name) %>
-        <% end %>
-      <% end %>
+        <%= f.label :location%>
+        <%= f.text_field :location, class: "txt-group" %>
     </div>
-    </div>
-    <div class="form-group">
-      <%= f.label :location%>
-      <%= f.text_field :location, class: "txt-group" %>
-    </div>
-    <div class="form-group">
-      <label for="">Date And Time</label>
-      <div class="container">
-    <div class="col-sm-6" style="height:130px;">
+    <div style="width:206px;" class="form-group">
+        <label for="">Date And Time</label>
         <div class="form-group">
             <div class='input-group date' id='datetimepicker8'>
-                <input type='text' class="form-control" />
+                <input style="height: 26.67px;" type='text' class="form-control"/>
                 <span class="input-group-addon">
-                    <span class="fa fa-calendar">
-                    </span>
+                    <span class="fa fa-calendar"></span>
                 </span>
             </div>
         </div>
-    </div>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker8').datetimepicker({
-                icons: {
-                    time: "fa fa-clock-o",
-                    date: "fa fa-calendar",
-                    up: "fa fa-arrow-up",
-                    down: "fa fa-arrow-down"
-                }
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker8').datetimepicker({
+                    icons: {
+                        time: "fa fa-clock-o",
+                        date: "fa fa-calendar",
+                        up: "fa fa-arrow-up",
+                        down: "fa fa-arrow-down"
+                    }
+                });
             });
-        });
-    </script>
-</div>
+        </script>
     </div>
-        <%= f.submit "Create Game", class: "btn btn-default" %>
-  <% end %>
+    <%= f.submit "Create Game", class: "btn btn-default" %>
+    <% end %>
+</div>
 </div>
