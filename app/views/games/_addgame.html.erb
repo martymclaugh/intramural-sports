@@ -25,20 +25,31 @@
     </div>
     <div class="form-group">
       <label for="">Date And Time</label>
-      <div id="datetimepicker" class="input-append date">
-        <%= f.text_field :date_time, class: "date and time" %>
-        <span class="add-on time-form">
-          <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-        </span>
-      </div>
-      <script type="text/javascript">
-        $('#datetimepicker').datetimepicker({
-          format: 'MM/dd/yyyy hh:mm:ss',
-          language: 'e',
-          pick12HourFormat: true
-
+      <div class="container">
+    <div class="col-sm-6" style="height:130px;">
+        <div class="form-group">
+            <div class='input-group date' id='datetimepicker8'>
+                <input type='text' class="form-control" />
+                <span class="input-group-addon">
+                    <span class="fa fa-calendar">
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker8').datetimepicker({
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-arrow-up",
+                    down: "fa fa-arrow-down"
+                }
+            });
         });
-      </script>
+    </script>
+</div>
     </div>
         <%= f.submit "Create Game", class: "btn btn-default" %>
   <% end %>
