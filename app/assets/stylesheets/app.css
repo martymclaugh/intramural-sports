@@ -28,5 +28,6 @@ div> [id*='-form'] {
   background-color: #df9fdf
 }
 
-
-
+.input-append .add-on {
+  height: 25px;
+}

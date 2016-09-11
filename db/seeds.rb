@@ -37,4 +37,3 @@ end
 300.times do
   PlayerTeam.create(team_id: rand(1..20), player_id: rand(1..300))
 end
-
