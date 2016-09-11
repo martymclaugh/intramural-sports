@@ -31,7 +31,9 @@
 
 		      <ul class="nav navbar-nav navbar-right">
 						<% if logged_in? %>
-					<li><a href="/">Hi <%= current_user.name.capitalize %>! </a>  </li>  <li><%= link_to "Logout", '/logout' %></li>
+					<li><a href="/">Hi <%= current_user.name.capitalize %>! </a>  </li>
+					<li><a href="/leagues/<%= current_user.teams[0].league_id %>/teams/<%= current_user.teams[0].id %>">My Team</a> </li>
+					<li><%= link_to "Logout", '/logout' %></li>
 					<% else %>
 					<li><%= link_to 'Login', '/login' %> </li> <li> <%= link_to 'Signup', '/signup' %> </li>
 					<% end %>
