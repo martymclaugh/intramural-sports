@@ -69,13 +69,13 @@ class GamesController < ApplicationController
 
     #UNCOMMENT WHEN READY TO USE
 
-    # @twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
-    # numbers_to_send_to.each do |number|
-    #   @twilio_client.account.sms.messages.create(
-    #     :from => twilio_phone_number,
-    #     :to => number,
-    #     :body => twilio_body
-    #     )
-    # end
+    @twilio_client = Twilio::REST::Client.new(twilio_sid, twilio_token)
+    numbers_to_send_to.each do |number|
+      @twilio_client.account.sms.messages.create(
+        :from => twilio_phone_number,
+        :to => number,
+        :body => twilio_body
+        )
+    end
   end
 end
