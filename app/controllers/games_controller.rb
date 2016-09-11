@@ -65,7 +65,7 @@ class GamesController < ApplicationController
     #   numbers_to_send_to << player.phone
     # end
     number = current_user.phone
-    twilio_body = "#{home_team.name} VS #{away_team.name} located at: #{location} Game starts at: #{time} on #{{date}}. Be there or B^2!"
+    twilio_body = "#{home_team.name} VS #{away_team.name} located at: #{location} Game starts at: #{time} on #{date}. Be there or B^2!"
 
     twilio_sid = ENV['TWILIO_ACCOUNT_SID']
     twilio_token = ENV['TWILIO_AUTH_TOKEN']
